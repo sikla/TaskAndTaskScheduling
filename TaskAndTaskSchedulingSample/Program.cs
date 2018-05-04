@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace TaskAndTaskSchedulingSample
 {
@@ -6,7 +7,15 @@ namespace TaskAndTaskSchedulingSample
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Parallel.Invoke(() => DoSomeWork(), () => DoSomeOtherWork());
+        }
+
+        static void DoSomeWork(){
+            Console.WriteLine("I'm doing something.");
+        }
+
+        static void DoSomeOtherWork(){
+            Console.WriteLine("I'm waiting.");
         }
     }
 }
